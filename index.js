@@ -14,3 +14,4 @@ document.querySelector('#click').addEventListener('click',() => {
             r.textContent = '첫 번째 값을 입력하세요'
     }
 });
+        
