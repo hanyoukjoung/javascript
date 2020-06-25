@@ -9,6 +9,7 @@ document.querySelector('#click').addEventListener('click',() => {
             r.textContent = c
         } else{
             r.textContent = '두 번째 값을 입력하세요'
+            
         }
     } else {
             r.textContent = '첫 번째 값을 입력하세요'
