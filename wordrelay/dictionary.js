@@ -14,7 +14,6 @@ btn.addEventListener('click', () => {
     if(dictionary.includes(input)) {
         errorTag.textContent = '중복입니다.'
     }else{
-
         if (word[word.length - 1] === input[0]){
             wordTag.textContent = input
             errorTag.textContent = ''
