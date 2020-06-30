@@ -12,17 +12,51 @@ const bonus = shuffle[6];
 console.log(winBalls);
 console.log(bonus);
 
-const resultTag = document.querySelector('#result');
-for(let i=0;i < 6; i++){
-    const ball = document.createElement('div');
-    ball.className = 'ball';
-    ball.textContent = winBalls[i];
-    resultTag.appendChild(ball);
+function colorize(number, tag){
+    if (number <= 10){
+        tag.style.backgroundColor = 'red';
+        tag.style.color = 'white';
+    }else if (number <= 20){
+        tag.style.backgroundColor = 'orange';
+        tag.style.color = 'white';
+    }else if(number <= 30){
+        tag.style.backgroundColor = 'yellow';
+    }else if(number <= 40){
+        tag.style.backgroundColor = 'blue';
+        tag.style.color = 'white';
+    }else {
+        tag.style.backgroundColor = 'green';
+        tag.style.color = 'white';
+    }
 }
 
+const resultTag = document.querySelector('#result');
+for(let i=0;i < 6; i++){ // 클로저 문제 let 나오면서 x
+    setTimeout(() => {
+        const ball = document.createElement('div');
+        ball.className = 'ball';
+        colorize(winBalls[i],ball);
+        ball.textContent = winBalls[i];
+        resultTag.appendChild(ball);
+    }, 1000 * (i+1));
+}
+
+// winBalls.forEach((number,index) => {
+//     setTimeout(() => {
+//         const ball = document.createElement('div');
+//         ball.className = 'ball';
+//         colorize(number,ball);
+//         ball.textContent = number;
+//         resultTag.appendChild(ball);
+//     }, 1000 * (index+1));
+// })
+
 const bonusTag = document.querySelector('#bonus');
-const bonusBall = document.createElement('div');
-bonusBall.className = 'ball';
-bonusBall.textContent = bonus;
-console.log(bonusBall)
-bonusTag.appendChild(bonusBall);
+setTimeout(() => {
+    const bonusBall = document.createElement('div');
+    bonusBall.className = 'ball';
+    colorize(bonus,bonusBall);
+    bonusBall.textContent = bonus;
+    console.log(bonusBall);
+    bonusTag.appendChild(bonusBall);  
+}, 7000);
